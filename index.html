@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Audio-Quiz</title>
+<link rel="icon" href="Noten.png" type="image/png">
+
+<style>
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    font-family:Arial, sans-serif;
+  }
+
+  .card{
+    padding:40px 50px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px);
+    text-align:center;
+  }
+
+  button{
+    padding:14px 28px;
+    border-radius:999px;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Audio-Quiz</h2>
+  <p>Höre dir die Audio an und rate!</p>
+  <button onclick="startRick()">Audio-Quiz starten</button>
+</div>
+
+<audio id="rick" src="Rick Astley - Never Gonna Give You Up.mp3"></audio>
+
+<script>
+  const audio = document.getElementById("rick");
+
+  function startRick(){
+
+    audio.loop = true;
+
+    audio.play().catch(err=>{
+      alert("Dein Browser blockiert Autoplay. Tippe erneut.");
+    });
+
+    // unpausierbar machen
+    audio.addEventListener("pause", ()=>{
+      audio.play();
+    });
+
+    // Lautstärke fix
+    audio.volume = 1.0;
+  }
+</script>
+
+</body>
+</html>
